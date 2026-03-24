@@ -89,8 +89,3 @@ The projects follow a consistent approach:
 
 ## Notes
 The datasets used are for practice purposes. The focus is on the analytical process, clarity of the model, and the ability to extract useful insights.
-
----
-
-## Contact
-Open to feedback, collaboration, and opportunities related to data analysis and business intelligence.
