@@ -1,12 +1,18 @@
 # Case Study: AdventureWorks Sales Performance (PostgreSQL + Power BI)
+
 > **Domain:** E-commerce & Retail Analytics  
 > **Technical Focus:** SQL Schema Migration, Data Modeling & Financial KPI Analysis
 
 ---
 
-## 📊 Business Logic & SQL Performance
+## Business Logic & SQL Performance
 
 In this phase, I translated business requirements into optimized SQL queries. To ensure the database remains the "Single Source of Truth," I developed complex views instead of performing raw data manipulation in the visualization layer.
+
+## Data Source & Installation
+The raw dataset used in this project is the **AdventureWorks OLTP** sample provided by Microsoft. 
+* **Source:** [AdventureWorks Samples GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)
+* **Setup:** To replicate this repo, run the `install.sql` script located in the `/02_SQL_Analysis` folder after downloading the raw CSV files.
 
 ### 1. Key Business Metrics (KPIs)
 I focused on three main pillars to evaluate the company's health:
@@ -30,3 +36,75 @@ JOIN production.productsubcategory AS ps ON p.productsubcategoryid = ps.products
 JOIN production.productcategory AS pc ON ps.productcategoryid = pc.productcategoryid
 GROUP BY pc.name
 ORDER BY Total_Revenue DESC;
+
+/AdventureWorks_E_commerce
+│
+├── 📁 01_ETL_Scripts
+│   ├── update_csvs.rb      
+│
+├── 📁 02_SQL_Analysis
+│   ├── schema_setup.sql    
+│   ├── business_queries.sql 
+│   └── views_creation.sql   
+│
+├── 📁 03_Visualization
+│   ├── AdventureWorks_Report.pbix 
+│   └── dashboard_preview.png
+│
+├── 📁 04_docs
+│   └── ER_Diagram.png 
+│
+└── README.md
+
+## Key Business Insights
+After analyzing the PostgreSQL database, several strategic findings were identified:
+## Query Results & Business Intelligence
+
+The following Key Performance Indicators (KPIs) were extracted using optimized SQL queries in PostgreSQL. These results form the basis for the final Power BI Dashboard.
+
+### 1. Executive Summary: Revenue & Profit by Category
+| Category | Total Revenue (USD) | Total Profit (USD) | Order Count |
+| :--- | :--- | :--- | :--- |
+| **Bikes** | $95,145,813.35 | $8,431,034.66 | 18,368 |
+| **Components** | $11,807,808.02 | $495,447.92 | 2,650 |
+| **Clothing** | $2,141,507.02 | $329,846.67 | 9,877 |
+| **Accessories** | $1,278,760.91 | $643,082.29 | 19,524 |
+
+> **Strategic Insight:** While **Bikes** drive the massive majority of revenue, **Accessories** dominate in transaction volume (19,524 orders). This indicates a high-frequency, low-ticket customer behavior that can be leveraged for cross-selling strategies.
+
+### 2. Top 10 High-Revenue Products
+The "Mountain-200" series is the undisputed leader in sales performance:
+
+1. **Mountain-200 Black, 38:** $4,406,151.27
+2. **Mountain-200 Black, 42:** $4,014,067.80
+3. **Mountain-200 Silver, 38:** $3,696,486.47
+4. **Mountain-200 Silver, 42:** $3,441,292.54
+5. **Mountain-200 Silver, 46:** $3,436,090.79
+6. **Mountain-200 Black, 46:** $3,311,098.44
+7. **Road-250 Black, 44:** $2,518,299.76
+8. **Road-250 Black, 48:** $2,348,246.09
+9. **Road-250 Black, 52:** $2,012,447.78
+10. **Road-150 Red, 56:** $1,847,818.63
+
+### 3. Geographic Sales Performance (Top Territories)
+The Southwest and Canada regions represent the strongest pillars for North American operations.
+
+| Territory | Region | Sales Amount (USD) |
+| :--- | :--- | :--- |
+| **Southwest** | North America | $27,150,594.59 |
+| **Canada** | North America | $18,398,929.19 |
+| **Northwest** | North America | $18,061,660.37 |
+| **Australia** | Pacific | $11,814,376.10 |
+| **United Kingdom**| Europe | $8,574,048.71 |
+| **France** | Europe | $8,119,749.35 |
+| **Germany** | Europe | $5,479,819.58 |
+
+---
+
+## Actionable Conclusions
+
+1. **High-Frequency Funnel:** Accessories should be used as "loss leaders" or entry-point products in digital marketing, as they bring the most customers into the ecosystem.
+2. **Inventory Focus:** The Mountain-200 Black series (sizes 38 & 42) should have 100% stock availability, as they alone generate over $8.4M in revenue.
+3. **Market Optimization:** Australia is the strongest market outside of North America, outperforming any individual European country. This suggests a need for localized logistics or distribution hubs in the Pacific region.
+
+---
