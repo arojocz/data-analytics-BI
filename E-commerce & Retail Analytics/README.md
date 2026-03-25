@@ -1,91 +1,32 @@
-# data-analytics-BI
-This repo is for data analytics and visualization of dashboards containing projects focused on turning raw data into meaningful insights.
----
-
-# Business Intelligence & Data Analytics Portfolio
-
-## About
-This repository contains a collection of Business Intelligence and data analysis projects focused on turning raw data into meaningful insights. The work covers the full workflow, from data preparation and modeling to analysis and visualization.
-
-The goal is to demonstrate practical skills in solving business problems using data, not just building dashboards.
+# Case Study: AdventureWorks Sales Performance (PostgreSQL + Power BI)
+> **Domain:** E-commerce & Retail Analytics  
+> **Technical Focus:** SQL Schema Migration, Data Modeling & Financial KPI Analysis
 
 ---
 
-## What you will find here
-Each project includes:
-- Data cleaning and transformation
-- Data modeling (with a focus on clear relationships and scalability)
-- Analytical logic using DAX or SQL
-- A dashboard designed for decision-making
-- Key findings and business-oriented insights
+## 📊 Business Logic & SQL Performance
 
----
+In this phase, I translated business requirements into optimized SQL queries. To ensure the database remains the "Single Source of Truth," I developed complex views instead of performing raw data manipulation in the visualization layer.
 
-## Tools and Technologies
-- Power BI (data modeling, DAX, visualization)
-- SQL (data extraction and transformation)
-- Excel (data preparation and exploration)
-- Power Query (ETL processes)
+### 1. Key Business Metrics (KPIs)
+I focused on three main pillars to evaluate the company's health:
+* **Total Revenue:** Calculated as `UnitPrice * OrderQty` to ensure real-time accuracy.
+* **Gross Profit:** Derived by subtracting `StandardCost` from total sales to measure actual earnings.
+* **Profit Margin:** Used to identify the most efficient product categories.
 
----
+### 2. High-Performance SQL Implementation
+The following query aggregates **31,000+ sales records** to provide an executive summary by category:
 
-## Projects
-
-### 1. Income and Cost Analysis
-Analysis of financial performance across countries and time.
-
-Focus areas:
-- Income vs cost comparison
-- Profitability by region
-- Efficiency and cost structure
-
-This project highlights how revenue alone does not reflect performance, and how cost structure impacts overall results.
-
----
-
-### 2. Sales Performance Dashboard
-Exploration of sales data to evaluate growth and performance drivers.
-
-Focus areas:
-- Revenue trends over time
-- Product and regional performance
-- Contribution analysis
-
-The objective is to identify what is driving growth and where performance can be improved.
-
----
-
-### 3. Customer / Marketing Analysis
-Analysis of customer behavior and segmentation.
-
-Focus areas:
-- Customer distribution
-- Segmentation patterns
-- Behavioral insights
-
-This project focuses on understanding how different customer groups contribute to overall performance.
-
----
-
-## Approach
-The projects follow a consistent approach:
-
-1. Data cleaning and preparation  
-2. Data modeling with clear relationships  
-3. Creation of measures and KPIs  
-4. Dashboard design focused on usability  
-5. Interpretation of results from a business perspective  
-
----
-
-## Skills Demonstrated
-- Data modeling and relational thinking  
-- DAX and analytical calculations  
-- ETL and data transformation  
-- Data visualization best practices  
-- Translating data into business insights  
-
----
-
-## Notes
-The datasets used are for practice purposes. The focus is on the analytical process, clarity of the model, and the ability to extract useful insights.
+```sql
+SELECT 
+    pc.name AS Category,
+    CAST(SUM(sod.unitprice * sod.orderqty) AS NUMERIC(18,2)) AS Total_Revenue,
+    CAST(SUM((sod.unitprice * sod.orderqty) - (p.standardcost * sod.orderqty)) AS NUMERIC(18,2)) AS Total_Profit,
+    COUNT(DISTINCT soh.salesorderid) AS Order_Count
+FROM sales.salesorderheader AS soh
+JOIN sales.salesorderdetail AS sod ON soh.salesorderid = sod.salesorderid
+JOIN production.product AS p ON sod.productid = p.productid
+JOIN production.productsubcategory AS ps ON p.productsubcategoryid = ps.productsubcategoryid
+JOIN production.productcategory AS pc ON ps.productcategoryid = pc.productcategoryid
+GROUP BY pc.name
+ORDER BY Total_Revenue DESC;
