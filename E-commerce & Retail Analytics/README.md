@@ -55,6 +55,9 @@ ORDER BY Total_Revenue DESC;
 │   └── ER_Diagram.png 
 │
 └── README.md
+```
+
+---
 
 ## Key Business Insights
 After analyzing the PostgreSQL database, several strategic findings were identified:

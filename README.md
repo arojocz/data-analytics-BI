@@ -55,18 +55,6 @@ The objective is to identify what is driving growth and where performance can be
 
 ---
 
-### 3. Customer / Marketing Analysis
-Analysis of customer behavior and segmentation.
-
-Focus areas:
-- Customer distribution
-- Segmentation patterns
-- Behavioral insights
-
-This project focuses on understanding how different customer groups contribute to overall performance.
-
----
-
 ## Approach
 The projects follow a consistent approach:
 
