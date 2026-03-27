@@ -1,79 +1,62 @@
-# data-analytics-BI
-This repo is for data analytics and visualization of dashboards containing projects focused on turning raw data into meaningful insights.
----
-
 # Business Intelligence & Data Analytics Portfolio
 
 ## About
-This repository contains a collection of Business Intelligence and data analysis projects focused on turning raw data into meaningful insights. The work covers the full workflow, from data preparation and modeling to analysis and visualization.
+This repository contains my Business Intelligence and Data Analytics portfolio, focused on turning raw database records into strategic, actionable business insights. The work here covers the full end-to-end analytical workflow: from SQL data extraction and transformation to DAX modeling and advanced Power BI visualization.
 
-The goal is to demonstrate practical skills in solving business problems using data, not just building dashboards.
+My core philosophy is that dashboards should not just display numbers; they must solve business problems, identify revenue leaks, and drive decision-making.
 
 ---
 
 ## What you will find here
-Each project includes:
-- Data cleaning and transformation
-- Data modeling (with a focus on clear relationships and scalability)
-- Analytical logic using DAX or SQL
-- A dashboard designed for decision-making
-- Key findings and business-oriented insights
+Each project in this repository includes:
+- **Data Engineering:** SQL scripts for data cleaning, type casting, and view creation.
+- **Data Modeling:** Relational model design optimized for performance.
+- **Analytical Logic:** DAX measures handling filter contexts and time intelligence.
+- **Data Storytelling:** Dashboards designed with UI/UX best practices for executive scanning.
+- **Business Insights:** Translation of visual trends into strategic recommendations.
 
 ---
 
 ## Tools and Technologies
-- Power BI (data modeling, DAX, visualization)
-- SQL (data extraction and transformation)
-- Excel (data preparation and exploration)
-- Power Query (ETL processes)
+- **Power BI:** Data modeling, advanced DAX (Variables, Context manipulation), Conditional Formatting.
+- **SQL (PostgreSQL / SQL Server):** Data extraction, cleaning (e.g., Date casting), and analytical views.
+- **Data Architecture:** Relational database querying and star-schema principles.
 
 ---
 
-## Projects
+## Featured Projects
 
-### 1. Income and Cost Analysis
-Analysis of financial performance across countries and time.
+### 1. AdventureWorks: Executive Sales & Profitability Dashboard
+An end-to-end Business Intelligence solution analyzing over $100M+ in global sales data to evaluate market health, product efficiency, and geographical growth.
 
-Focus areas:
-- Income vs cost comparison
-- Profitability by region
-- Efficiency and cost structure
+**Focus Areas & Technical Implementations:**
+- **Volume vs. Profitability Analysis:** Developed dual-axis logic to distinguish between gross revenue and net profit. Implemented a *Top N Dynamic Filter* with conditional formatting (Red/Green) to instantly flag "False Heroes" (high-volume products with negative profit margins).
+- **Time Intelligence & KPIs:** Engineered custom DAX measures using `VAR`, `CALCULATE`, and filter overrides to track Year-over-Year (YoY) and Month-over-Month (MoM) performance against baseline targets, avoiding the pitfalls of standard auto-date functions.
+- **Geospatial & Category Tracking:** Designed cross-filtered visual grids (Maps and Treemaps) allowing stakeholders to drill down into specific regional performances, revealing high-yield markets like Australia.
+- **Executive UI/UX:** Applied the "F-Pattern" layout for readability, utilizing high-visibility KPI cards for absolute metrics and isolating complex trends into intuitive scatter and line charts.
 
-This project highlights how revenue alone does not reflect performance, and how cost structure impacts overall results.
-
----
-
-### 2. Sales Performance Dashboard
-Exploration of sales data to evaluate growth and performance drivers.
-
-Focus areas:
-- Revenue trends over time
-- Product and regional performance
-- Contribution analysis
-
-The objective is to identify what is driving growth and where performance can be improved.
+**Key Business Insight:**
+Revenue volume does not equal business health. The dashboard successfully highlighted that while the "Bikes" category drove top-line revenue, specific SKUs in the "Clothing" segment generated high sales volume but operated at a deficit, indicating a need for urgent pricing or logistical adjustments.
 
 ---
 
 ## Approach
-The projects follow a consistent approach:
-
-1. Data cleaning and preparation  
-2. Data modeling with clear relationships  
-3. Creation of measures and KPIs  
-4. Dashboard design focused on usability  
-5. Interpretation of results from a business perspective  
+My analytical projects follow a consistent, business-first approach:
+1. **Understand the Business Question:** Define what stakeholders need to know (e.g., "Are we actually making money on our top-selling items?").
+2. **Data Preparation (SQL):** Clean and structure data at the source to ensure Power BI performance.
+3. **Modeling & DAX:** Build resilient measures that adapt to complex user filtering.
+4. **Visual Design:** Prioritize cognitive ease, removing visual noise and using color strategically (Exception Reporting).
+5. **Insight Generation:** Deliver clear, data-backed recommendations.
 
 ---
 
 ## Skills Demonstrated
-- Data modeling and relational thinking  
-- DAX and analytical calculations  
-- ETL and data transformation  
-- Data visualization best practices  
-- Translating data into business insights  
+- **SQL:** Querying, Views, Data Cleansing.
+- **Power BI DAX:** `CALCULATE`, `DIVIDE`, `VAR`, `MAX`, `REMOVEFILTERS`.
+- **Data Visualization:** Exception Reporting, Scatter Plots, Geographic mapping, Dynamic Tooltips.
+- **Business Acumen:** Translating technical data points into Profit & Loss (P&L) realities.
 
 ---
 
 ## Notes
-The datasets used are for practice purposes. The focus is on the analytical process, clarity of the model, and the ability to extract useful insights.
+The datasets used (such as the AdventureWorks sample database) are utilized to demonstrate the analytical process, the clarity of the data model, and the ability to extract executive-level insights from raw transactional systems.

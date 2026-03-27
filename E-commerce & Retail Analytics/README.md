@@ -1,18 +1,103 @@
-# Case Study: AdventureWorks Sales Performance (PostgreSQL + Power BI)
+# Business Intelligence & Data Analytics Portfolio
+
+## About
+This repository contains a collection of Business Intelligence and data analysis projects focused on turning raw data into meaningful insights. The work covers the full workflow, from data preparation and modeling to analysis and visualization.
+
+The goal is to demonstrate practical skills in solving business problems using data, not just building dashboards.
+
+---
+
+## What you will find here
+Each project includes:
+- Data cleaning and transformation
+- Data modeling (with a focus on clear relationships and scalability)
+- Analytical logic using DAX or SQL
+- A dashboard designed for decision-making
+- Key findings and business-oriented insights
+
+---
+
+## Tools and Technologies
+- Power BI (data modeling, DAX, visualization)
+- SQL (data extraction and transformation)
+- Excel (data preparation and exploration)
+- Power Query (ETL processes)
+
+---
+
+## Approach
+The projects follow a consistent approach:
+1. Data cleaning and preparation  
+2. Data modeling with clear relationships  
+3. Creation of measures and KPIs  
+4. Dashboard design focused on usability  
+5. Interpretation of results from a business perspective  
+
+---
+
+## Skills Demonstrated
+- Data modeling and relational thinking  
+- DAX and analytical calculations  
+- ETL and data transformation  
+- Data visualization best practices  
+- Translating data into business insights  
+
+---
+
+## Notes
+The datasets used are for practice purposes. The focus is on the analytical process, clarity of the model, and the ability to extract useful insights.
+
+---
+---
+
+# Featured Project: AdventureWorks Sales Performance (PostgreSQL + Power BI)
 
 > **Domain:** E-commerce & Retail Analytics  
 > **Technical Focus:** SQL Schema Migration, Data Modeling & Financial KPI Analysis
 
 ---
 
-## Business Logic & SQL Performance
+## Repository Structure
+```text
+/AdventureWorks_E_commerce
+│
+├── 📁 01_ETL_Scripts
+│   └── update_csvs.rb      
+│   └── install.sql      
+│
+├── 📁 02_SQL_Analysis
+│   ├── geo_performance.sql    
+│   ├── Revenue_and_Profit_by_Category.sql 
+│   └── top_10.sql   
+│   └── vw_sales_performance.sql   
+|
+├── 📁 03_Visualization
+│   ├── AdventureWorks_Report.pbix 
+│   └── dashboard_preview.png
+│
+├── 📁 04_docs
+│   └── ER_Diagram.png 
+│
+└── README.md
+```
 
-In this phase, I translated business requirements into optimized SQL queries. To ensure the database remains the "Single Source of Truth," I developed complex views instead of performing raw data manipulation in the visualization layer.
+---
 
-## Data Source & Installation
+## Data Architecture & Modeling
+To ensure robust data integrity before visualization, the raw tables were modeled into a relational schema optimized for analytical querying.
+
+![Entity Relationship Diagram](./04_docs/ERD_Adventureworks.png)
+
+### Data Source & Installation
 The raw dataset used in this project is the **AdventureWorks OLTP** sample provided by Microsoft. 
 * **Source:** [AdventureWorks Samples GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)
 * **Setup:** To replicate this repo, run the `install.sql` script located in the `/02_SQL_Analysis` folder after downloading the raw CSV files.
+
+---
+
+## Business Logic & SQL Performance
+
+In this phase, I translated business requirements into optimized SQL queries. To ensure the database remains the "Single Source of Truth," I developed complex views instead of performing raw data manipulation in the visualization layer.
 
 ### 1. Key Business Metrics (KPIs)
 I focused on three main pillars to evaluate the company's health:
@@ -36,36 +121,16 @@ JOIN production.productsubcategory AS ps ON p.productsubcategoryid = ps.products
 JOIN production.productcategory AS pc ON ps.productcategoryid = pc.productcategoryid
 GROUP BY pc.name
 ORDER BY Total_Revenue DESC;
-
-/AdventureWorks_E_commerce
-│
-├── 📁 01_ETL_Scripts
-│   ├── update_csvs.rb      
-│
-├── 📁 02_SQL_Analysis
-│   ├── schema_setup.sql    
-│   ├── business_queries.sql 
-│   └── views_creation.sql   
-│
-├── 📁 03_Visualization
-│   ├── AdventureWorks_Report.pbix 
-│   └── dashboard_preview.png
-│
-├── 📁 04_docs
-│   └── ER_Diagram.png 
-│
-└── README.md
 ```
 
 ---
 
-## Key Business Insights
-After analyzing the PostgreSQL database, several strategic findings were identified:
 ## Query Results & Business Intelligence
 
 The following Key Performance Indicators (KPIs) were extracted using optimized SQL queries in PostgreSQL. These results form the basis for the final Power BI Dashboard.
 
 ### 1. Executive Summary: Revenue & Profit by Category
+
 | Category | Total Revenue (USD) | Total Profit (USD) | Order Count |
 | :--- | :--- | :--- | :--- |
 | **Bikes** | $95,145,813.35 | $8,431,034.66 | 18,368 |
@@ -109,5 +174,3 @@ The Southwest and Canada regions represent the strongest pillars for North Ameri
 1. **High-Frequency Funnel:** Accessories should be used as "loss leaders" or entry-point products in digital marketing, as they bring the most customers into the ecosystem.
 2. **Inventory Focus:** The Mountain-200 Black series (sizes 38 & 42) should have 100% stock availability, as they alone generate over $8.4M in revenue.
 3. **Market Optimization:** Australia is the strongest market outside of North America, outperforming any individual European country. This suggests a need for localized logistics or distribution hubs in the Pacific region.
-
----
