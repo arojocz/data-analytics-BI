@@ -7,6 +7,15 @@ My core philosophy is that dashboards should not just display numbers; they must
 
 ---
 
+## Tech
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=microsoftpowerbi&logoColor=black)
+![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white)
+![VirtualBox](https://img.shields.io/badge/VirtualBox-214478?style=for-the-badge&logo=virtualbox&logoColor=white)
+
+---
+
 ## What you will find here
 Each project in this repository includes:
 - **Data Engineering:** SQL scripts for data cleaning, type casting, and view creation.
