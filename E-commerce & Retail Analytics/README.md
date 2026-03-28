@@ -71,13 +71,15 @@ The datasets used are for practice purposes. The focus is on the analytical proc
     │   └── vw_sales_performance.sql   
     |
     ├── 📁 03_Visualization
-    │   ├── AdventureWorks_Report.pbix 
-    │   ├── dashboard_unfiltered.png
-    │   ├── dashboard_last_year.png
-    │   └── dashboard_australia_last_year.png
+    │   ├── AdventureWorks.pbix 
+    │   ├── revenue_AdventureWorks.pptx
+    │   ├── dashboard1.png
+    │   ├── dashboard2.png
+    │   └── dashboard3.png
     │
     ├── 📁 04_docs
     │   └── ERD_Adventureworks.png 
+    │   └── data_dictionary.md 
     │
     └── README.md
 
