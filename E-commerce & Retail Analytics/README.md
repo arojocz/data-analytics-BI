@@ -58,28 +58,28 @@ The datasets used are for practice purposes. The focus is on the analytical proc
 ---
 
 ## Repository Structure
-```text
-/AdventureWorks_E_commerce
-│
-├── 📁 01_ETL_Scripts
-│   └── update_csvs.rb      
-│   └── install.sql      
-│
-├── 📁 02_SQL_Analysis
-│   ├── geo_performance.sql    
-│   ├── Revenue_and_Profit_by_Category.sql 
-│   └── top_10.sql   
-│   └── vw_sales_performance.sql   
-|
-├── 📁 03_Visualization
-│   ├── AdventureWorks_Report.pbix 
-│   └── dashboard_preview.png
-│
-├── 📁 04_docs
-│   └── ER_Diagram.png 
-│
-└── README.md
-```
+    /AdventureWorks_E_commerce
+    │
+    ├── 📁 01_ETL_Scripts
+    │   └── update_csvs.rb      
+    │   └── install.sql      
+    │
+    ├── 📁 02_SQL_Analysis
+    │   ├── geo_performance.sql    
+    │   ├── Revenue_and_Profit_by_Category.sql 
+    │   ├── top_10.sql   
+    │   └── vw_sales_performance.sql   
+    |
+    ├── 📁 03_Visualization
+    │   ├── AdventureWorks_Report.pbix 
+    │   ├── dashboard_unfiltered.png
+    │   ├── dashboard_last_year.png
+    │   └── dashboard_australia_last_year.png
+    │
+    ├── 📁 04_docs
+    │   └── ERD_Adventureworks.png 
+    │
+    └── README.md
 
 ---
 
@@ -108,20 +108,18 @@ I focused on three main pillars to evaluate the company's health:
 ### 2. High-Performance SQL Implementation
 The following query aggregates **31,000+ sales records** to provide an executive summary by category:
 
-```sql
-SELECT 
-    pc.name AS Category,
-    CAST(SUM(sod.unitprice * sod.orderqty) AS NUMERIC(18,2)) AS Total_Revenue,
-    CAST(SUM((sod.unitprice * sod.orderqty) - (p.standardcost * sod.orderqty)) AS NUMERIC(18,2)) AS Total_Profit,
-    COUNT(DISTINCT soh.salesorderid) AS Order_Count
-FROM sales.salesorderheader AS soh
-JOIN sales.salesorderdetail AS sod ON soh.salesorderid = sod.salesorderid
-JOIN production.product AS p ON sod.productid = p.productid
-JOIN production.productsubcategory AS ps ON p.productsubcategoryid = ps.productsubcategoryid
-JOIN production.productcategory AS pc ON ps.productcategoryid = pc.productcategoryid
-GROUP BY pc.name
-ORDER BY Total_Revenue DESC;
-```
+    SELECT 
+        pc.name AS Category,
+        CAST(SUM(sod.unitprice * sod.orderqty) AS NUMERIC(18,2)) AS Total_Revenue,
+        CAST(SUM((sod.unitprice * sod.orderqty) - (p.standardcost * sod.orderqty)) AS NUMERIC(18,2)) AS Total_Profit,
+        COUNT(DISTINCT soh.salesorderid) AS Order_Count
+    FROM sales.salesorderheader AS soh
+    JOIN sales.salesorderdetail AS sod ON soh.salesorderid = sod.salesorderid
+    JOIN production.product AS p ON sod.productid = p.productid
+    JOIN production.productsubcategory AS ps ON p.productsubcategoryid = ps.productsubcategoryid
+    JOIN production.productcategory AS pc ON ps.productcategoryid = pc.productcategoryid
+    GROUP BY pc.name
+    ORDER BY Total_Revenue DESC;
 
 ---
 
@@ -166,6 +164,24 @@ The Southwest and Canada regions represent the strongest pillars for North Ameri
 | **United Kingdom**| Europe | $8,574,048.71 |
 | **France** | Europe | $8,119,749.35 |
 | **Germany** | Europe | $5,479,819.58 |
+
+---
+
+## Interactive Dashboard (Power BI)
+
+To provide stakeholders with dynamic insights, I developed an interactive Power BI dashboard. Below are three key views demonstrating the dashboard's filtering and cross-filtering capabilities.
+
+### 1. Global Performance (Unfiltered)
+Displays the all-time macro performance across all regions, categories, and years.
+![Global Dashboard](./03_Visualization/dashboard1.png)
+
+### 2. Recent Performance (Last Year)
+Filters the data to analyze the most recent annual trends and overall profitability.
+![Last Year Dashboard](./03_Visualization/dashboard2.png)
+
+### 3. Regional Deep-Dive (Last Year + Australia)
+Demonstrates cross-filtering by isolating the Pacific market's top-performing country during the latest financial year.
+![Australia Last Year Dashboard](./03_Visualization/dashboard3.png)
 
 ---
 
